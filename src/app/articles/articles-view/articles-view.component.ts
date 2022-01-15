@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Article } from '../../../core/models/article.model';
 import { environment } from '../../../environments/environment';
 
@@ -15,6 +16,7 @@ export class ArticlesViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<Article[]>(environment.apiUrl+'api/Articles')
+    .pipe(take(1))
     .subscribe(res => {
         this.articles = res.map(article => {
           article.createdDate = new Date(article.createdDate).toLocaleString();

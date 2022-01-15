@@ -21,7 +21,7 @@ const routes: Routes = [
         path: 'list',
         component: ArticlesViewComponent,
         data: {
-          title: 'Artykuły'
+          title: 'Lista artykułów'
         },
       },
       {
