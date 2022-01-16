@@ -51,6 +51,7 @@ import { MediaModule } from './medias/medias.module';
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

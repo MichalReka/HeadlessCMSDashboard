@@ -60,7 +60,7 @@ export const navItems: INavData[] = [
         url: '/medias/add',
         icon: 'icon-plus'
       },
-]
+    ]
   },
   // {
   //   title: true,

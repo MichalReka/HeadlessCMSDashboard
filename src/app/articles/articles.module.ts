@@ -5,14 +5,15 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { ArticleFormComponent } from "./article-form/article-form.component";
 import { ArticlesRoutingModule } from "./articles-routing.module";
 import { ArticlesViewComponent } from "./articles-list/articles-view.component";
+import { AngularEditorModule } from "@kolkov/angular-editor";
 
 @NgModule({
   imports: [
     CommonModule,
     // FormsModule,
-    FormsModule,
     BsDropdownModule,
     ArticlesRoutingModule,
+    AngularEditorModule,
     // BsDropdownModule.forRoot(),
     // TabsModule,
     // CarouselModule.forRoot(),

@@ -3,38 +3,36 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <strong>Basic Form</strong> Elements
+                    <strong>Dodawanie artykułu</strong>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form formGroupName="form" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label">Static</label>
+                            <label class="col-md-3 col-form-label">Autor</label>
                             <div class="col-md-9">
-                                <p class="form-control-static">Username</p>
+                                <p class="form-control-static"></p>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">Text Input</label>
+                            <label class="col-md-3 col-form-label" for="text-input">Tytuł</label>
                             <div class="col-md-9">
-                                <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
-                                <span class="help-block">This is a help text</span>
+                                <input type="text" id="text-input" formControlName="title" name="text-input" class="form-control">
+                                <span class="help-block">Wprowadź tytuł artykułu</span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="email-input">Email Input</label>
+                            <label class="col-md-3 col-form-label">Miniatura</label>
                             <div class="col-md-9">
-                                <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email" autocomplete="email">
-                                <span class="help-block">Please enter your email</span>
+                                <input type="file" formControlName="leadImage">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="password-input">Password</label>
+                            <label class="col-md-3 col-form-label" for="file-input">Zawartość</label>
                             <div class="col-md-9">
-                                <input type="password" id="password-input" name="password-input" class="form-control" placeholder="Password" autocomplete="current-password">
-                                <span class="help-block">Please enter a complex password</span>
+                                <angular-editor formControlName="content" [config]="editorConfig"></angular-editor>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="date-input">Date Input</label>
                             <div class="col-md-9">
                                 <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date">
@@ -53,23 +51,18 @@
                                 <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="file-input">File input</label>
-                            <div class="col-md-9">
-                                <input type="file" id="file-input" name="file-input">
-                            </div>
-                        </div>
+                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="file-multiple-input">Multiple File input</label>
                             <div class="col-md-9">
                                 <input type="file" id="file-multiple-input" name="file-multiple-input" multiple>
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                    <button type="submit" class="btn btn-sm btn-primary" (click)="submit()"><i class="fa fa-dot-circle-o"></i> Dodaj</button>
+                    <!-- <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
                 </div>
             </div>
         </div>
