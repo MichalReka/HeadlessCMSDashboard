@@ -21,6 +21,7 @@ export class ArticlesViewComponent implements OnInit {
         this.articles = res.map(article => {
           article.createdDate = new Date(article.createdDate).toLocaleString();
           article.updatedDate = new Date(article.updatedDate).toLocaleString();
+          article.createdBy.createdDate = new Date(article.createdBy.createdDate).toLocaleString();
           return article;
         });
     });

@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../../core/auth/auth.guard';
-import { ArticleFormComponent } from './article-form/article-form.component';
-import { ArticlesViewComponent } from './articles-list/articles-view.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Artykuły'
+      title: 'Użytkownicy'
     },
     children:[
       {
@@ -19,16 +18,16 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        component: ArticlesViewComponent,
+        component: UsersListComponent,
         data: {
-          title: 'Lista artykułów'
+          title: 'Lista użytkowników'
         },
       },
       {
         path: 'add',
-        component: ArticleFormComponent,
+        component: UserFormComponent,
         data: {
-          title: 'Dodaj artykuł'
+          title: 'Dodaj użytkownika'
         },
       }
     ]
@@ -40,4 +39,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ArticlesRoutingModule {}
+export class UsersRoutingModule {}

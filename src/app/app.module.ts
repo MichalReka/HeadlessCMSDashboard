@@ -43,10 +43,11 @@ import { ChartsModule } from 'ng2-charts';
 import { ArticleModule } from './articles/articles.module';
 import { AuthService } from '../core/auth/auth.service';
 import { AuthGuard } from '../core/auth/auth.guard';
-import { HttpClient, HttpClientModule, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../core/auth/auth.interceptor';
-import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { UserModule } from './users/users.module';
+import { MediaModule } from './medias/medias.module';
 
 @NgModule({
   imports: [
@@ -54,6 +55,8 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     AppRoutingModule,
     ArticleModule,
+    MediaModule,
+    UserModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,

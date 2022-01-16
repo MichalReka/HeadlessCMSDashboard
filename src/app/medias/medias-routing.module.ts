@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../../core/auth/auth.guard';
-import { ArticleFormComponent } from './article-form/article-form.component';
-import { ArticlesViewComponent } from './articles-list/articles-view.component';
+import { MediaFormComponent } from './media-form/media-form.component';
+import { MediasListComponent } from './medias-list/medias-list.component';
 
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Artykuły'
+      title: 'Media'
     },
     children:[
       {
@@ -19,16 +18,16 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        component: ArticlesViewComponent,
+        component: MediasListComponent,
         data: {
-          title: 'Lista artykułów'
+          title: 'Lista grafik'
         },
       },
       {
         path: 'add',
-        component: ArticleFormComponent,
+        component: MediaFormComponent,
         data: {
-          title: 'Dodaj artykuł'
+          title: 'Dodaj grafikę'
         },
       }
     ]
@@ -40,4 +39,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ArticlesRoutingModule {}
+export class MediasRoutingModule {}

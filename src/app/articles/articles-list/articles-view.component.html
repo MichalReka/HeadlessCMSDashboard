@@ -23,9 +23,9 @@
                                         <div>{{article.title}}</div>
                                     </td>
                                     <td class="text-center">
-                                        <div>Yiorgos Avraamu</div>
+                                        <div>{{article.createdBy.firstName}} {{article.createdBy.lastName}}</div>
                                         <div class="small text-muted">
-                                            <span>New</span> | Registered: Jan 1, 2015
+                                            Zarejestrowano: {{article.createdBy.createdDate}}
                                         </div>
                                     </td>
                                     <td class="text-center">

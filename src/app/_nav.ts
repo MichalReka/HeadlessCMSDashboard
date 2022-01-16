@@ -22,7 +22,7 @@ export const navItems: INavData[] = [
             icon: 'icon-list'
           },
           {
-            name: 'Dodaj nowy',
+            name: 'Dodaj artykuł',
             url: '/articles/add',
             icon: 'icon-plus'
           },
@@ -31,12 +31,36 @@ export const navItems: INavData[] = [
   {
     name: 'Użytkownicy',
     url: '/users',
-    icon: 'icon-user'
+    icon: 'icon-user',
+    children: [
+      {
+        name: 'Lista użytkowników',
+        url: '/users/list',
+        icon: 'icon-list'
+      },
+      {
+        name: 'Dodaj użytkownika',
+        url: '/users/add',
+        icon: 'icon-plus'
+      },
+]
   },
   {
     name: 'Media',
     url: '/medias',
-    icon: 'icon-picture'
+    icon: 'icon-picture',
+    children: [
+      {
+        name: 'Lista grafik',
+        url: '/medias/list',
+        icon: 'icon-list'
+      },
+      {
+        name: 'Dodaj grafikę',
+        url: '/medias/add',
+        icon: 'icon-plus'
+      },
+]
   },
   // {
   //   title: true,

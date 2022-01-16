@@ -3,6 +3,7 @@ export class User{
     firstName: string
     lastName: string
     role: UserRole
+    createdDate: string
 }
 
 export enum UserRole{

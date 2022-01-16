@@ -2,9 +2,9 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
-import { ArticleFormComponent } from "./article-form/article-form.component";
-import { ArticlesRoutingModule } from "./articles-routing.module";
-import { ArticlesViewComponent } from "./articles-list/articles-view.component";
+import { MediasListComponent } from "./medias-list/medias-list.component";
+import { MediaFormComponent } from "./media-form/media-form.component";
+import { MediasRoutingModule } from "./medias-routing.module";
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { ArticlesViewComponent } from "./articles-list/articles-view.component";
     // FormsModule,
     FormsModule,
     BsDropdownModule,
-    ArticlesRoutingModule,
+    MediasRoutingModule,
     // BsDropdownModule.forRoot(),
     // TabsModule,
     // CarouselModule.forRoot(),
@@ -23,8 +23,8 @@ import { ArticlesViewComponent } from "./articles-list/articles-view.component";
     // TooltipModule.forRoot()
   ],
   declarations: [
-    ArticlesViewComponent,
-    ArticleFormComponent,
+    MediasListComponent,
+    MediaFormComponent,
   ]
 })
-export class ArticleModule { }
+export class MediaModule { }

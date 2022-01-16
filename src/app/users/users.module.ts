@@ -2,9 +2,9 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
-import { ArticleFormComponent } from "./article-form/article-form.component";
-import { ArticlesRoutingModule } from "./articles-routing.module";
-import { ArticlesViewComponent } from "./articles-list/articles-view.component";
+import { UserFormComponent } from "./user-form/user-form.component";
+import { UsersListComponent } from "./users-list/users-list.component";
+import { UsersRoutingModule } from "./users-routing.module";
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { ArticlesViewComponent } from "./articles-list/articles-view.component";
     // FormsModule,
     FormsModule,
     BsDropdownModule,
-    ArticlesRoutingModule,
+    UsersRoutingModule,
     // BsDropdownModule.forRoot(),
     // TabsModule,
     // CarouselModule.forRoot(),
@@ -23,8 +23,8 @@ import { ArticlesViewComponent } from "./articles-list/articles-view.component";
     // TooltipModule.forRoot()
   ],
   declarations: [
-    ArticlesViewComponent,
-    ArticleFormComponent,
+    UsersListComponent,
+    UserFormComponent,
   ]
 })
-export class ArticleModule { }
+export class UserModule { }

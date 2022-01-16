@@ -53,6 +53,14 @@ export const routes: Routes = [
         loadChildren: () => import('./articles/articles.module').then(m => m.ArticleModule)
       },
       {
+        path: 'medias',
+        loadChildren: () => import('./medias/medias.module').then(m => m.MediaModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then(m => m.UserModule)
+      },
+      {
         path: 'buttons',
         loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
       },
