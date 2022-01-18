@@ -45,13 +45,13 @@ import { AuthService } from '../core/auth/auth.service';
 import { AuthGuard } from '../core/auth/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../core/auth/auth.interceptor';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './users/users.module';
 import { MediaModule } from './medias/medias.module';
+import { ArticlesServices } from '../core/services/articles.services';
 
 @NgModule({
   imports: [
-    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -91,7 +91,8 @@ import { MediaModule } from './medias/medias.module';
     FormBuilder,
     IconSetService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ArticlesServices
   ],
   bootstrap: [ AppComponent ]
 })

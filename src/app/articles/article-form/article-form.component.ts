@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Article } from '../../../core/models/article.model';
+import { ArticlesServices } from '../../../core/services/articles.services';
 
 @Component({
   selector: 'app-article-form',
@@ -9,22 +13,22 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 })
 export class ArticleFormComponent implements OnInit {
   
+  public posting : boolean;
+
   editorConfig: AngularEditorConfig = {
     editable: true,
-    spellcheck: true,
     height: 'auto',
     minHeight: '200px',
     maxHeight: 'auto',
     width: 'auto',
     minWidth: '0',
-    translate: 'yes',
+    translate: 'no',
     enableToolbar: true,
     showToolbar: true,
     placeholder: 'Wprowadź treść artykułu',
     defaultParagraphSeparator: '',
     defaultFontSize: '',
     defaultFontName: 'Arial',
-    sanitize: true,
     toolbarPosition: 'top',
     toolbarHiddenButtons: [
       [
@@ -36,17 +40,32 @@ export class ArticleFormComponent implements OnInit {
     ]
   }
   
-  form : FormGroup;
-  constructor(private fb: FormBuilder) { }
+  articleForm : FormGroup;
+  constructor(private fb: FormBuilder, private _service : ArticlesServices) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.articleForm = this.fb.group({
       content: [''],
+      title: [''],
+      leadImage: [''],
     });
   }
 
   submit(): void{
-    console.log(this.form.controls['content'].value);
+    this.posting = true;
+
+    let content = this.articleForm.get('content').value;
+    let title = this.articleForm.get('title').value;
+
+    let article = new Article(title, content);
+
+    this._service.postArticle(article).pipe(catchError(er=>{
+      this.posting = false;
+      return of();
+    })).subscribe(article =>{
+      this.posting = false;
+      console.log(article);
+    })
   }
 
 }

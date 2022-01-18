@@ -7,4 +7,10 @@ export class Article{
     updatedDate: string
     createdBy: User
     updatedBy: User
+    content: string
+
+    constructor(title : string, content : string){
+        this.title = title;
+        this.content = content;
+    }
 }

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs/operators';
 import { Article } from '../../../core/models/article.model';
-import { environment } from '../../../environments/environment';
+import { ArticlesServices } from '../../../core/services/articles.services';
 
 @Component({
   selector: 'app-articles-view',
@@ -12,11 +11,10 @@ import { environment } from '../../../environments/environment';
 export class ArticlesViewComponent implements OnInit {
 
   articles: Article[];
-  constructor(private http: HttpClient) {   }
+  constructor(private http: HttpClient, private _service : ArticlesServices) {   }
 
   ngOnInit(): void {
-    this.http.get<Article[]>(environment.apiUrl+'api/Articles')
-    .pipe(take(1))
+    this._service.getArticles()
     .subscribe(res => {
         this.articles = res.map(article => {
           article.createdDate = new Date(article.createdDate).toLocaleString();
