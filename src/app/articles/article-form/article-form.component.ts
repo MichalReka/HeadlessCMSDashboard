@@ -14,6 +14,8 @@ import { ArticlesServices } from '../../../core/services/articles.services';
 export class ArticleFormComponent implements OnInit {
   
   public posting : boolean;
+  private image : File;
+
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -51,20 +53,28 @@ export class ArticleFormComponent implements OnInit {
     });
   }
 
+  handleFileInput(eventFiles : File[]){
+    this.articleForm.get('leadImage').setValue(eventFiles[0]);
+  }
+
   submit(): void{
     this.posting = true;
 
     let content = this.articleForm.get('content').value;
     let title = this.articleForm.get('title').value;
+    let leadImage = this.articleForm.get('leadImage').value;
+    const formData = new FormData();
+    formData.append('leadImage', leadImage);
+    formData.append('title', title);
+    formData.append('content', content);
 
-    let article = new Article(title, content);
+    console.log(formData);
 
     this._service.postArticle(article).pipe(catchError(er=>{
       this.posting = false;
       return of();
     })).subscribe(article =>{
       this.posting = false;
-      console.log(article);
     })
   }
 
