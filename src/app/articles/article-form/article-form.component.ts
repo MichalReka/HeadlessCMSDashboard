@@ -54,7 +54,20 @@ export class ArticleFormComponent implements OnInit {
   }
 
   handleFileInput(eventFiles : File[]){
-    this.articleForm.get('leadImage').setValue(eventFiles[0]);
+    if(eventFiles && eventFiles.length)
+    {
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        console.log(reader.result);
+      }
+      reader.readAsText(eventFiles[0]);
+      this.articleForm.get('leadImage').setValue(reader.result);
+    }
+    else
+    {
+      this.articleForm.get('leadImage').setValue(null);
+    }
+
   }
 
   submit(): void{
@@ -63,19 +76,15 @@ export class ArticleFormComponent implements OnInit {
     let content = this.articleForm.get('content').value;
     let title = this.articleForm.get('title').value;
     let leadImage = this.articleForm.get('leadImage').value;
-    const formData = new FormData();
-    formData.append('leadImage', leadImage);
-    formData.append('title', title);
-    formData.append('content', content);
 
-    console.log(formData);
+    console.log(leadImage);
 
-    this._service.postArticle(article).pipe(catchError(er=>{
-      this.posting = false;
-      return of();
-    })).subscribe(article =>{
-      this.posting = false;
-    })
+    // this._service.postArticle(article).pipe(catchError(er=>{
+    //   this.posting = false;
+    //   return of();
+    // })).subscribe(article =>{
+    //   this.posting = false;
+    // })
   }
 
 }
