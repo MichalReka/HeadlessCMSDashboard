@@ -77,14 +77,17 @@ export class ArticleFormComponent implements OnInit {
     let title = this.articleForm.get('title').value;
     let leadImage = this.articleForm.get('leadImage').value;
 
-    console.log(leadImage);
+    let article = new Article(title, content);
 
-    // this._service.postArticle(article).pipe(catchError(er=>{
-    //   this.posting = false;
-    //   return of();
-    // })).subscribe(article =>{
-    //   this.posting = false;
-    // })
+    console.log(leadImage);
+    console.log(content);
+
+    this._service.postArticle(article).pipe(catchError(er=>{
+      this.posting = false;
+      return of();
+    })).subscribe(article =>{
+      this.posting = false;
+    })
   }
 
 }
