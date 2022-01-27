@@ -4,7 +4,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Article } from '../../../core/models/article.model';
-import { ArticlesServices } from '../../../core/services/articles.services';
+import { ArticlesService } from '../../../core/services/articles.service';
 
 @Component({
   selector: 'app-article-form',
@@ -43,7 +43,7 @@ export class ArticleFormComponent implements OnInit {
   }
   
   articleForm : FormGroup;
-  constructor(private fb: FormBuilder, private _service : ArticlesServices) { }
+  constructor(private fb: FormBuilder, private _service : ArticlesService) { }
 
   ngOnInit(): void {
     this.articleForm = this.fb.group({
@@ -58,10 +58,9 @@ export class ArticleFormComponent implements OnInit {
     {
       const reader = new FileReader();
       reader.onload = ()=>{
-        console.log(reader.result);
+        this.articleForm.get('leadImage').setValue(reader.result);
       }
-      reader.readAsText(eventFiles[0]);
-      this.articleForm.get('leadImage').setValue(reader.result);
+      reader.readAsDataURL(eventFiles[0]);
     }
     else
     {
@@ -77,10 +76,10 @@ export class ArticleFormComponent implements OnInit {
     let title = this.articleForm.get('title').value;
     let leadImage = this.articleForm.get('leadImage').value;
 
-    let article = new Article(title, content);
-
     console.log(leadImage);
-    console.log(content);
+
+    let article = new Article(title, content, leadImage);
+
 
     this._service.postArticle(article).pipe(catchError(er=>{
       this.posting = false;

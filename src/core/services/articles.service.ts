@@ -3,12 +3,13 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { take } from "rxjs/operators";
 import { environment } from "../../environments/environment";
+import { AuthService } from "../auth/auth.service";
 import { Article } from "../models/article.model";
 
 @Injectable({
     providedIn: 'root',
 })
-export class ArticlesServices{
+export class ArticlesService{
     public constructor(private http: HttpClient){}
 
     public getArticles() : Observable<Article[]>{

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../../../core/models/article.model';
-import { ArticlesServices } from '../../../core/services/articles.services';
+import { ArticlesService } from '../../../core/services/articles.service';
 
 @Component({
   selector: 'app-articles-view',
@@ -11,7 +11,7 @@ import { ArticlesServices } from '../../../core/services/articles.services';
 export class ArticlesViewComponent implements OnInit {
 
   articles: Article[];
-  constructor(private http: HttpClient, private _service : ArticlesServices) {   }
+  constructor(private http: HttpClient, private _service : ArticlesService) {   }
 
   ngOnInit(): void {
     this._service.getArticles()

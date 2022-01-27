@@ -48,7 +48,7 @@ import { AuthInterceptor } from '../core/auth/auth.interceptor';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './users/users.module';
 import { MediaModule } from './medias/medias.module';
-import { ArticlesServices } from '../core/services/articles.services';
+import { ArticlesService } from '../core/services/articles.service';
 
 @NgModule({
   imports: [
@@ -92,7 +92,7 @@ import { ArticlesServices } from '../core/services/articles.services';
     IconSetService,
     AuthService,
     AuthGuard,
-    ArticlesServices
+    ArticlesService
   ],
   bootstrap: [ AppComponent ]
 })
